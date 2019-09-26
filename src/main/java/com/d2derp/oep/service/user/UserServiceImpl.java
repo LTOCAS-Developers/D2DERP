@@ -119,7 +119,6 @@ public class UserServiceImpl implements UserService {
 			userPojo.setStatus(user.getStatus());
 			
 			clientPojo.setCompanyName(user.getClient().getCompanyName());
-			clientPojo.setCompanyName(user.getClient().getCompanyName());
 			clientPojo.setId(user.getClient().getId());
 			userTypePojo.setUserType(user.getUserType().getUserType());
 			userTypePojo.setId(user.getUserType().getId());
