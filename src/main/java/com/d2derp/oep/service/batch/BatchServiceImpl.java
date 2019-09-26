@@ -26,7 +26,6 @@ public class BatchServiceImpl implements BatchService {
 
 	@Autowired
 	private ClientDao clientDao;
-	
 
 	public BatchDao getBatchDao() {
 		return batchDao;
@@ -57,9 +56,8 @@ public class BatchServiceImpl implements BatchService {
 	public List<BatchPojo> listBatch() {
 		List<BatchPojo> batchPojoList = new ArrayList();
 		List<Batch> batchList = batchDao.findAll();
-		 ClientPojo clientPojo=new ClientPojo();
+		ClientPojo clientPojo = new ClientPojo();
 
-		
 		for (int i = 0; i < batchList.size(); i++) {
 
 			Batch batch = batchList.get(i);
@@ -79,8 +77,7 @@ public class BatchServiceImpl implements BatchService {
 
 	@Override
 	public BatchPojo findBatch(int id) {
-		 ClientPojo clientPojo=new ClientPojo();
-
+		ClientPojo clientPojo = new ClientPojo();
 
 		Optional<Batch> batch = batchDao.findById(id);
 		BatchPojo batchPojo = new BatchPojo();
