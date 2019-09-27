@@ -25,14 +25,14 @@ public class QuestionsTopicServiceImpl implements QuestionsTopicService {
 	private QuestionsTopicDao questionsTopicDao;
 
 	@Autowired
-	private CourseDao coursedao;
+	private CourseDao courseDao;
 
-	public CourseDao getCoursedao() {
-		return coursedao;
+	public CourseDao getCourseDao() {
+		return courseDao;
 	}
 
-	public void setCoursedao(CourseDao coursedao) {
-		this.coursedao = coursedao;
+	public void setCourseDao(CourseDao courseDao) {
+		this.courseDao = courseDao;
 	}
 
 	public QuestionsTopicDao getQuestionsTopicDao() {
@@ -50,11 +50,11 @@ public class QuestionsTopicServiceImpl implements QuestionsTopicService {
 		CoursePojo coursePojo = new CoursePojo();
 		if (questionsTopicPojo.getCoursePojo().getId() == 0) {
 			
-			course = coursedao.getOne(1);
+			course = courseDao.getOne(1);
 			System.out.println(questionsTopicPojo.getTopic());
 
 		} else {
-			course = coursedao.getOne(questionsTopicPojo.getCoursePojo().getId());
+			course = courseDao.getOne(questionsTopicPojo.getCoursePojo().getId());
 		}
 
 		questionsTopic.setTopic(questionsTopicPojo.getTopic());
