@@ -19,7 +19,7 @@ import com.d2derp.oep.pojo.UserPojo;
 import com.d2derp.oep.service.questionstopic.QuestionsTopicService;
 
 @RestController
-@RequestMapping("/questionsTopics")
+@RequestMapping("/questionsTopic")
 public class QuestionsTopicController {
 
 	@Autowired
