@@ -1,19 +1,11 @@
-package com.d2derp.oep.entity;
+package com.d2derp.oep.pojo;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import org.springframework.stereotype.Component;
 
-@Entity
-public class Questions {
+@Component
+public class QuestionsPojo {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int questionNumber;
-
 	private String questions;
 	private String option1;
 	private String option2;
@@ -21,23 +13,14 @@ public class Questions {
 	private String option4;
 	private String answer;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	private Course course;
+	private CoursePojo course;
 
-	public Course getCourse() {
+	public CoursePojo getCourse() {
 		return course;
 	}
 
-	public void setCourse(Course course) {
+	public void setCourse(CoursePojo course) {
 		this.course = course;
-	}
-
-	public String getQuestions() {
-		return questions;
-	}
-
-	public void setQuestions(String questions) {
-		this.questions = questions;
 	}
 
 	public int getQuestionNumber() {
@@ -46,6 +29,14 @@ public class Questions {
 
 	public void setQuestionNumber(int questionNumber) {
 		this.questionNumber = questionNumber;
+	}
+
+	public String getQuestions() {
+		return questions;
+	}
+
+	public void setQuestions(String questions) {
+		this.questions = questions;
 	}
 
 	public String getOption1() {

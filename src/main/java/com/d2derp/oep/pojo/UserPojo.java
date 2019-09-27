@@ -21,6 +21,8 @@ public class UserPojo {
 	private int lastModifiedDate;
 	private int ipAddress;
 	private UserTypePojo userTypePojo;
+	
+	
 	private ClientPojo clientPojo;
 		
 		public int getId() {
