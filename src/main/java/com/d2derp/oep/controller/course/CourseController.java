@@ -34,7 +34,6 @@ public class CourseController {
 	
 	@PostMapping(value = "/save")
 	public void saveCourse( @RequestBody CoursePojo coursePojo) {	
-		System.out.println(coursePojo.getName());
 		courseService.save(coursePojo);
 	}
 
