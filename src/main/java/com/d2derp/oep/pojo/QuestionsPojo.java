@@ -13,18 +13,30 @@ public class QuestionsPojo {
 	private String option4;
 	private String answer;
 
-	private CoursePojo course;
+	private CoursePojo coursePojo;
 
-	public CoursePojo getCourse() {
-		return course;
+	private QuestionsTopicPojo questionsTopicPojo;
+	
+	
+	
+	public QuestionsTopicPojo getQuestionsTopicPojo() {
+		return questionsTopicPojo;
 	}
 
-	public void setCourse(CoursePojo course) {
-		this.course = course;
+	public void setQuestionsTopicPojo(QuestionsTopicPojo questionsTopicPojo) {
+		this.questionsTopicPojo = questionsTopicPojo;
 	}
 
 	public int getQuestionNumber() {
 		return questionNumber;
+	}
+
+	public CoursePojo getCoursePojo() {
+		return coursePojo;
+	}
+
+	public void setCoursePojo(CoursePojo coursePojo) {
+		this.coursePojo = coursePojo;
 	}
 
 	public void setQuestionNumber(int questionNumber) {

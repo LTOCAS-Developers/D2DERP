@@ -23,6 +23,19 @@ public class Questions {
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Course course;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private QuestionsTopic questionsTopic;
+
+	
+	
+	public QuestionsTopic getQuestionsTopic() {
+		return questionsTopic;
+	}
+
+	public void setQuestionsTopic(QuestionsTopic questionsTopic) {
+		this.questionsTopic = questionsTopic;
+	}
 
 	public Course getCourse() {
 		return course;
