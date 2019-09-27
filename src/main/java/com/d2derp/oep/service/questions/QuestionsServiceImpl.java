@@ -154,7 +154,6 @@ public class QuestionsServiceImpl implements QuestionsService {
 	@Override
 	public void deleteQuestions(int id) {
 		questionDao.deleteById(id);
-
 	}
 
 	@Override
@@ -168,7 +167,7 @@ public class QuestionsServiceImpl implements QuestionsService {
 		question.get().setOption3(questionsPojo.getOption3());
 		question.get().setOption4(questionsPojo.getOption4());
 		question.get().setAnswer(questionsPojo.getAnswer());
-
+ 
 		Course course = question.get().getCourse();
 		course.setId(questionsPojo.getCoursePojo().getId());
 		course.setName(questionsPojo.getCoursePojo().getName());

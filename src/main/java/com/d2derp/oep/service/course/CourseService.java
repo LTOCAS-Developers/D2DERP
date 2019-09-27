@@ -5,8 +5,8 @@ import java.util.List;
 import com.d2derp.oep.pojo.CoursePojo;
 
 public interface CourseService {
+	
 	void save( CoursePojo coursePojo);
-
 	
 	List<CoursePojo> listCourse();
 
@@ -15,5 +15,6 @@ public interface CourseService {
 	void deleteCourse(int id);
 
 	CoursePojo editCourse(CoursePojo coursePojo);
+
 
 }
