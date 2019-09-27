@@ -1,3 +1,4 @@
+
 use d2derp;
 select * from user_type;
 select * from client;
