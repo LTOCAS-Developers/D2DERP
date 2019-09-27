@@ -16,6 +16,7 @@ import com.d2derp.oep.pojo.UserPojo;
 import com.d2derp.oep.service.user.UserService;
 
 @RestController
+@RequestMapping(name="user")
 public class UserController {
 
 	@Autowired
