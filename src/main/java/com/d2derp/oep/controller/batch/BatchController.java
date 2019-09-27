@@ -19,7 +19,6 @@ import com.d2derp.oep.service.batch.BatchService;
 
 @RestController
 @RequestMapping("/batch")
-
 public class BatchController {
 	
 
