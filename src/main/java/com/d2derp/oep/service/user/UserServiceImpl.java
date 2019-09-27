@@ -127,7 +127,6 @@ public class UserServiceImpl implements UserService {
 			userPojo.setUserTypePojo(userTypePojo);
 
 			userPojoList.add(userPojo);
-
 		}
 
 		return userPojoList;
