@@ -16,4 +16,6 @@ public interface ClientService {
 	void deleteClient(int id);
 
 	ClientPojo editClient(ClientPojo clientPojo);
+
+	List<ClientPojo> searchClient(String searchTerm);
 }

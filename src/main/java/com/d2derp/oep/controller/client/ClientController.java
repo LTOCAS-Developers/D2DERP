@@ -71,5 +71,10 @@ public class ClientController {
         return ResponseEntity.ok().build();
  
 	}
+	@GetMapping(value = "/search/{searchTerm}")
+	public  ResponseEntity<List<ClientPojo>>  searchClient(@PathVariable(value = "searchTerm") String searchTerm) {
+		return ResponseEntity.ok(clientService.searchClient(searchTerm)); 
+
+	}
 
 }
