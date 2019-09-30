@@ -90,6 +90,26 @@ public class ClientServiceImpl implements ClientService {
 		
 		return clientPojo;
 	}
+
+	@Override
+	public List<ClientPojo> searchClient(String searchTerm) {
+		List<ClientPojo> clientPojoList=new ArrayList();
+		List<Client> clientList=clientDao.findBySearchTerm(searchTerm);
+		for(int i=0;i<clientList.size();i++)
+		{
+			
+			Client client=clientList.get(i);
+			
+			ClientPojo clientPojo = new ClientPojo();
+			clientPojo.setCompanyName(client.getCompanyName());
+			clientPojo.setId(client.getId());
+
+			clientPojoList.add(clientPojo);
+			
+		}
+	
+		return clientPojoList;
+	}
 	
 	
 

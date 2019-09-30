@@ -21,6 +21,7 @@ import com.d2derp.oep.service.client.ClientService;
 import com.d2derp.oep.service.user.UserService;
 
 @RestController
+@RequestMapping("/clients")
 public class ClientController {
 
 	@Autowired
@@ -38,19 +39,19 @@ public class ClientController {
 
 
 
-	@GetMapping(value = "/clientList")
+	@GetMapping(value = "/list")
 	public ResponseEntity<List<ClientPojo>> listUser() {
 		return ResponseEntity.ok(clientService.listClient());
 	}
 
 
-	@GetMapping(value = "/getClient/{id}")
+	@GetMapping(value = "/get/{id}")
 	public ResponseEntity<ClientPojo> getClient(@PathVariable(value = "id") int id) {
 		return ResponseEntity.ok(clientService.findClient(id)); 
 
 	}
 	
-	@PutMapping(value = "/editClient")
+	@PutMapping(value = "/edit")
 	public ResponseEntity<ClientPojo> updateClient(@RequestBody ClientPojo clientPojo) {
 
 		if (clientService.findClient(clientPojo.getId())!= null) {
@@ -59,7 +60,7 @@ public class ClientController {
 	        return ResponseEntity.ok(clientService.editClient(clientPojo));
 	}
 
-	@DeleteMapping(value = "/deleteClient/{id}")
+	@DeleteMapping(value = "/delete/{id}")
 	public ResponseEntity  deleteClient(@PathVariable(value ="id") int id) {
         if (clientService.findClient(id) !=null) {
             ResponseEntity.badRequest().build();
@@ -69,6 +70,11 @@ public class ClientController {
 
         return ResponseEntity.ok().build();
  
+	}
+	@GetMapping(value = "/search/{searchTerm}")
+	public  ResponseEntity<List<ClientPojo>>  searchClient(@PathVariable(value = "searchTerm") String searchTerm) {
+		return ResponseEntity.ok(clientService.searchClient(searchTerm)); 
+
 	}
 
 }
