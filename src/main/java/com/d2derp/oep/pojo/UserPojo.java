@@ -1,5 +1,7 @@
 package com.d2derp.oep.pojo;
 
+import java.util.Date;
+
 import org.springframework.stereotype.Component;
 
 import com.d2derp.oep.entity.Client;
@@ -13,13 +15,34 @@ public class UserPojo {
 	private String firstName;
 	private String lastName;
 	private String email;
-	private int mobileNumber;
+	private long mobileNumber;
 	private String pass;
 	private String cpass;
 	private String status;
-	private int createdDate;
-	private int lastModifiedDate;
+	private Date createdDate;
+	private Date lastModifiedDate;
 	private int ipAddress;
+	
+	
+	
+	public long getMobileNumber() {
+		return mobileNumber;
+	}
+	public void setMobileNumber(long mobileNumber) {
+		this.mobileNumber = mobileNumber;
+	}
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+	public Date getLastModifiedDate() {
+		return lastModifiedDate;
+	}
+	public void setLastModifiedDate(Date lastModifiedDate) {
+		this.lastModifiedDate = lastModifiedDate;
+	}
 	private UserTypePojo userTypePojo;
 	
 	
@@ -55,12 +78,7 @@ public class UserPojo {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getMobileNumber() {
-		return mobileNumber;
-	}
-	public void setMobileNumber(int mobileNumber) {
-		this.mobileNumber = mobileNumber;
-	}
+
 	public String getPass() {
 		return pass;
 	}
@@ -79,18 +97,7 @@ public class UserPojo {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public int getCreatedDate() {
-		return createdDate;
-	}
-	public void setCreatedDate(int createdDate) {
-		this.createdDate = createdDate;
-	}
-	public int getLastModifiedDate() {
-		return lastModifiedDate;
-	}
-	public void setLastModifiedDate(int lastModifiedDate) {
-		this.lastModifiedDate = lastModifiedDate;
-	}
+
 	public int getIpAddress() {
 		return ipAddress;
 	}

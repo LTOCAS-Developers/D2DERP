@@ -35,7 +35,7 @@ public class UserController {
 				userService.save(userPojo);
 	}
 
-	@GetMapping(value = "/getUser/{id}")
+	@GetMapping(value = "/get/{id}")
 	public ResponseEntity<UserPojo> getUser(@PathVariable(value = "id") int id) {
 		return ResponseEntity.ok(userService.findUser(id)); 
 

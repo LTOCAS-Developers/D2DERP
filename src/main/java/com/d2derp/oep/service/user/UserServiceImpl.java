@@ -1,6 +1,7 @@
 package com.d2derp.oep.service.user;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,6 +32,8 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private ClientDao clientdao;
+	
+	Date date=new Date();
 
 	public UserTypeDao getUserTypeDao() {
 		return userTypeDao;
@@ -55,7 +58,7 @@ public class UserServiceImpl implements UserService {
 		UserType userType = null;
 		ClientPojo clientPojo = new ClientPojo();
 
-		if (userPojo.getClientPojo().getId() == 0  ) {
+		if (userPojo.getClientPojo().getId() == 0 | userPojo.getClientPojo() == null ) {
 			System.out.println("iiii");
 			userPojo.getClientPojo().setId(1);
 			client = clientdao.getOne(1);
@@ -64,7 +67,7 @@ public class UserServiceImpl implements UserService {
 			client = clientdao.getOne(userPojo.getClientPojo().getId());
 
 		}
-		if (userPojo.getUserTypePojo().getId() == 0) {
+		if (userPojo.getUserTypePojo().getId() == 0 | userPojo.getUserTypePojo() == null) {
 			userPojo.getUserTypePojo().setId(1);
 			userType = userTypeDao.getOne(1);
 		} else {
@@ -73,17 +76,16 @@ public class UserServiceImpl implements UserService {
 		}
 
 		user.setCpass(userPojo.getCpass());
-		user.setCreatedDate(userPojo.getCreatedDate());
+		user.setCreatedDate(date);
 		user.setEmail(userPojo.getEmail());
 		user.setFirstName(userPojo.getFirstName());
-		user.setId(userPojo.getId());
-		user.setIpAddress(userPojo.getIpAddress());
-		user.setLastModifiedDate(userPojo.getLastModifiedDate());
+		user.setIpAddress(111111);
+		user.setLastModifiedDate(date);
 		user.setLastName(userPojo.getLastName());
 		user.setMobileNumber(userPojo.getMobileNumber());
 		user.setPass(userPojo.getPass());
-		user.setSno(userPojo.getSno());
-		user.setStatus(userPojo.getStatus());
+		user.setSno(1);
+		user.setStatus("ok");
 
 		user.setUserType(userType);
 		user.setClient(client);
@@ -106,12 +108,12 @@ public class UserServiceImpl implements UserService {
 			UserPojo userPojo = new UserPojo();
 
 			userPojo.setCpass(user.getCpass());
-			userPojo.setCreatedDate(user.getCreatedDate());
+			userPojo.setCreatedDate(date);
 			userPojo.setEmail(user.getEmail());
 			userPojo.setFirstName(user.getFirstName());
 			userPojo.setId(user.getId());
 			userPojo.setIpAddress(user.getIpAddress());
-			userPojo.setLastModifiedDate(user.getLastModifiedDate());
+			userPojo.setLastModifiedDate(date);
 			userPojo.setLastName(user.getLastName());
 			userPojo.setMobileNumber(user.getMobileNumber());
 			userPojo.setPass(user.getPass());
@@ -148,12 +150,9 @@ public class UserServiceImpl implements UserService {
 		userPojo.setClientPojo(clientPojo);
 
 		userPojo.setCpass(user.get().getCpass());
-		userPojo.setCreatedDate(user.get().getCreatedDate());
 		userPojo.setEmail(user.get().getEmail());
 		userPojo.setFirstName(user.get().getFirstName());
 		userPojo.setId(user.get().getId());
-		userPojo.setIpAddress(user.get().getIpAddress());
-		userPojo.setLastModifiedDate(user.get().getLastModifiedDate());
 		userPojo.setLastName(user.get().getLastName());
 		userPojo.setMobileNumber(user.get().getMobileNumber());
 		userPojo.setPass(user.get().getPass());
