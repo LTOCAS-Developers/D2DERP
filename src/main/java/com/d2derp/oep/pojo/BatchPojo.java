@@ -2,8 +2,6 @@ package com.d2derp.oep.pojo;
 
 import org.springframework.stereotype.Component;
 
-import com.d2derp.oep.entity.Client;
-
 @Component
 public class BatchPojo {
 

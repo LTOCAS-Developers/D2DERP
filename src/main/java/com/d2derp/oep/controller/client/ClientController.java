@@ -1,7 +1,6 @@
 package com.d2derp.oep.controller.client;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,14 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.d2derp.oep.entity.Client;
-import com.d2derp.oep.entity.User;
 import com.d2derp.oep.pojo.ClientPojo;
 import com.d2derp.oep.service.client.ClientService;
-import com.d2derp.oep.service.user.UserService;
 
 @RestController
 @RequestMapping("/clients")
