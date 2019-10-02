@@ -9,18 +9,9 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.d2derp.oep.dao.client.ClientDao;
 import com.d2derp.oep.dao.course.CourseDao;
-import com.d2derp.oep.dao.user.UserDao;
-import com.d2derp.oep.dao.user.UserTypeDao;
-import com.d2derp.oep.entity.Client;
 import com.d2derp.oep.entity.Course;
-import com.d2derp.oep.entity.User;
-import com.d2derp.oep.entity.UserType;
-import com.d2derp.oep.pojo.ClientPojo;
 import com.d2derp.oep.pojo.CoursePojo;
-import com.d2derp.oep.pojo.UserPojo;
-import com.d2derp.oep.pojo.UserTypePojo;
 
 @Transactional
 @Service("courseService")

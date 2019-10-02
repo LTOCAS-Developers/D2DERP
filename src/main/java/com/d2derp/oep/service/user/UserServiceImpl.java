@@ -159,7 +159,10 @@ public class UserServiceImpl implements UserService {
 		userPojo.setPass(user.get().getPass());
 		userPojo.setSno(user.get().getSno());
 		userPojo.setStatus(user.get().getStatus());
-
+		userPojo.setIpAddress(user.get().getIpAddress());
+		userPojo.setCreatedDate(user.get().getCreatedDate());
+		userPojo.setLastModifiedDate(user.get().getLastModifiedDate());
+		
 		return userPojo;
 
 	}
@@ -178,7 +181,6 @@ public class UserServiceImpl implements UserService {
 
 		user.get().setFirstName(userPojo.getFirstName());
 		user.get().setCpass(userPojo.getCpass());
-		user.get().setCreatedDate(userPojo.getCreatedDate());
 		user.get().setEmail(userPojo.getEmail());
 		user.get().setId(userPojo.getId());
 		user.get().setIpAddress(userPojo.getIpAddress());

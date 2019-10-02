@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.d2derp.oep.dao.batch.BatchDao;
 import com.d2derp.oep.pojo.BatchPojo;
 import com.d2derp.oep.service.batch.BatchService;
 

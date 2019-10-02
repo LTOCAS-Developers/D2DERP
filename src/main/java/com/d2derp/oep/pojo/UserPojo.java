@@ -4,9 +4,6 @@ import java.util.Date;
 
 import org.springframework.stereotype.Component;
 
-import com.d2derp.oep.entity.Client;
-import com.d2derp.oep.entity.UserType;
-
 @Component
 public class UserPojo {
 

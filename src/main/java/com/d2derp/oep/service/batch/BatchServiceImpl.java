@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import com.d2derp.oep.dao.batch.BatchDao;
 import com.d2derp.oep.dao.client.ClientDao;
-import com.d2derp.oep.dao.user.UserTypeDao;
 import com.d2derp.oep.entity.Batch;
 import com.d2derp.oep.entity.Client;
 import com.d2derp.oep.pojo.BatchPojo;
