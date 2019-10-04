@@ -108,17 +108,17 @@ public class ExamServiceImpl implements ExamService {
 		examDao.deleteById(id);
 
 	}
-//	@Override
-//	public ExamPojo editExam(ExamPojo examPojo) {
-//
-//		Optional<Exam> exam = examDao.findById(examPojo.getId());
-//		exam.get().setId(examPojo.getId());
-//		exam.get().setName(examPojo.getName());
-//		exam.get().setDate(date);
-//		exam.get().setStartTime(date);
-//		exam.get().setEndTime(date);
-//
-//		return examPojo;
-//	}
+	@Override
+	public ExamPojo editExam(ExamPojo examPojo) {
+
+		Optional<Exam> exam = examDao.findById(examPojo.getId());
+		exam.get().setId(examPojo.getId());
+		exam.get().setName(examPojo.getName());
+		exam.get().setDate(date);
+		exam.get().setStartTime(date);
+		exam.get().setEndTime(date);
+
+		return examPojo;
+	}
 
 }

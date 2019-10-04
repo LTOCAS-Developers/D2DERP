@@ -12,7 +12,7 @@ public interface ExamService {
 
 	ExamPojo findExam(int id);
 
-//	ExamPojo editExam(ExamPojo examPojo);
+	ExamPojo editExam(ExamPojo examPojo);
 
 	void deleteExam(int id);
 

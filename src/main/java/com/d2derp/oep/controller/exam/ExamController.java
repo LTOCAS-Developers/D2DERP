@@ -45,14 +45,14 @@ public class ExamController {
 
 	}
 
-//	@RequestMapping("/edit")
-//	public ResponseEntity<ExamPojo> editExam(@RequestBody ExamPojo examPojo) {
-//		if (examService.findExam(examPojo.getId()) != null) {
-//			ResponseEntity.badRequest().build();
-//		}
-//		return ResponseEntity.ok(examService.editExam(examPojo));
-//
-//	}
+	@RequestMapping("/edit")
+	public ResponseEntity<ExamPojo> editExam(@RequestBody ExamPojo examPojo) {
+		if (examService.findExam(examPojo.getId()) != null) {
+			ResponseEntity.badRequest().build();
+		}
+		return ResponseEntity.ok(examService.editExam(examPojo));
+
+	}
 
 	@RequestMapping("/delete/{id}")
 	public ResponseEntity deleteExam(@PathVariable(value = "id") int id) {
