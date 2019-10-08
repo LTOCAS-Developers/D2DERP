@@ -9,16 +9,24 @@ import javax.persistence.ManyToOne;
 @Embeddable
 public class QuestionsQuespaperAssoId implements Serializable {
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Questions questions;
-	@ManyToOne(cascade = CascadeType.ALL)
 	private QuestionPaper questionPaper;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
 	public Questions getQuestions() {
 		return questions;
 	}
 	public void setQuestions(Questions questions) {
 		this.questions = questions;
 	}
+	
+	@ManyToOne(cascade = CascadeType.ALL)
 	public QuestionPaper getQuestionPaper() {
 		return questionPaper;
 	}

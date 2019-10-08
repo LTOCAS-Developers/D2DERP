@@ -18,7 +18,7 @@ import javax.persistence.Transient;
 public class QuestionsQuespaperAsso {
 
 	@EmbeddedId
-	private QuestionsQuespaperAssoId questionsQuespaperAssoId;
+	private QuestionsQuespaperAssoId questionsQuespaperAssoId=new QuestionsQuespaperAssoId();
 	
 	  @Transient
 	    public Questions getQuestions() {

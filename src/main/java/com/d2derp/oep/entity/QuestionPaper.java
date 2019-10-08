@@ -14,21 +14,23 @@ import javax.persistence.OneToMany;
 @Entity
 public class QuestionPaper {
 
-	@Id
-	@GeneratedValue
-	@Column(name = "QuestionPaper_ID")
-	private int id;
+		private int id;
 	private String name;
 	
-	@OneToMany(mappedBy = "questionsQuespaperAssoId.questionPaper", cascade = CascadeType.ALL)
-	private List<QuestionsQuespaperAsso> questionsQuespaperAsso = new ArrayList<QuestionsQuespaperAsso>();
+	private List<QuestionsQuespaperAsso> questionsQuespaperAsso;
 
+	@OneToMany(mappedBy = "questionsQuespaperAssoId.questionPaper", cascade = CascadeType.ALL)
 	public List<QuestionsQuespaperAsso> getQuestionsQuespaperAsso() {
 		return questionsQuespaperAsso;
 	}
+	
 	public void setQuestionsQuespaperAsso(List<QuestionsQuespaperAsso> questionsQuespaperAsso) {
 		this.questionsQuespaperAsso = questionsQuespaperAsso;
 	}
+	
+	@Id
+	@GeneratedValue
+	@Column(name = "QuestionPaper_ID")
 	public int getId() {
 		return id;
 	}

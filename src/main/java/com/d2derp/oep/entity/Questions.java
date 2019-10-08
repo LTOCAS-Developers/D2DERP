@@ -14,9 +14,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Questions {
-	@Id
-	@GeneratedValue
-	@Column(name = "Questions_ID")
+	
 	private int questionNumber;
 
 	private String questions;
@@ -29,12 +27,11 @@ public class Questions {
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Course course;
 
-	@ManyToOne(cascade = CascadeType.ALL)
 	private QuestionsTopic questionsTopic;
 
-	@OneToMany(mappedBy = "questionsQuespaperAssoId.questions", cascade = CascadeType.ALL)
 	private List<QuestionsQuespaperAsso> questionsQuespaperAsso = new ArrayList<QuestionsQuespaperAsso>();
 
+	@OneToMany(cascade = CascadeType.ALL)
 	public List<QuestionsQuespaperAsso> getQuestionsQuespaperAsso() {
 		return questionsQuespaperAsso;
 	}
@@ -67,6 +64,9 @@ public class Questions {
 		this.questions = questions;
 	}
 
+	@Id
+	@GeneratedValue
+	@Column(name = "Questions_ID")
 	public int getQuestionNumber() {
 		return questionNumber;
 	}
