@@ -1,17 +1,22 @@
 package com.d2derp.oep.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Questions {
-
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
+	@Column(name = "Questions_ID")
 	private int questionNumber;
 
 	private String questions;
@@ -23,12 +28,21 @@ public class Questions {
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Course course;
-	
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	private QuestionsTopic questionsTopic;
 
-	
-	
+	@OneToMany(mappedBy = "questionsQuespaperAssoId.questions", cascade = CascadeType.ALL)
+	private List<QuestionsQuespaperAsso> questionsQuespaperAsso = new ArrayList<QuestionsQuespaperAsso>();
+
+	public List<QuestionsQuespaperAsso> getQuestionsQuespaperAsso() {
+		return questionsQuespaperAsso;
+	}
+
+	public void setQuestionsQuespaperAsso(List<QuestionsQuespaperAsso> questionsQuespaperAsso) {
+		this.questionsQuespaperAsso = questionsQuespaperAsso;
+	}
+
 	public QuestionsTopic getQuestionsTopic() {
 		return questionsTopic;
 	}

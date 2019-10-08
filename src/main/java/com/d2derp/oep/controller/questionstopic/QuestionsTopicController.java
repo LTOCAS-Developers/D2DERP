@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.d2derp.oep.entity.QuestionsTopic;
 import com.d2derp.oep.pojo.QuestionsTopicPojo;
 import com.d2derp.oep.service.questionstopic.QuestionsTopicService;
 
@@ -64,5 +65,9 @@ public class QuestionsTopicController {
 		questionsTopicService.deleteQuestionsTopic(id);
 
 		return ResponseEntity.ok().build();
+	}
+	@GetMapping(value = "/getbycourseid/{id}")
+	public ResponseEntity<List<QuestionsTopic>> findQuestionsTopicByCourseId(@PathVariable(value = "id") int id) {
+		return ResponseEntity.ok(questionsTopicService.findQuestionsTopicByCourseId(id));
 	}
 }

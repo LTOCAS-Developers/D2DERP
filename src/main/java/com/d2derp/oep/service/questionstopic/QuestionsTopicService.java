@@ -2,6 +2,7 @@ package com.d2derp.oep.service.questionstopic;
 
 import java.util.List;
 
+import com.d2derp.oep.entity.QuestionsTopic;
 import com.d2derp.oep.pojo.QuestionsTopicPojo;
 
 public interface QuestionsTopicService {
@@ -15,5 +16,7 @@ public interface QuestionsTopicService {
 	void deleteQuestionsTopic(int id);
 
 	QuestionsTopicPojo editQuestionstopic(QuestionsTopicPojo questionsTopicPojo);
+	
+	List<QuestionsTopic> findQuestionsTopicByCourseId(int id);
 
 }
