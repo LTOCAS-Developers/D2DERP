@@ -12,5 +12,10 @@ insert into client values(1,"Ltocas");
 INSERT INTO `d2derp`.`client` (`id`, `company_name`) VALUES ('2', 'Cts');
 INSERT INTO `d2derp`.`course` (`id`, `name`) VALUES ('1', 'Java');
 INSERT INTO `d2derp`.`course` (`id`, `name`) VALUES ('2', 'Angular');
-
+CREATE TABLE `ques_quespaper_asso` (
+  `quespaper_id` int(11) NOT NULL,
+  `ques_id` int(11) NOT NULL,
+  KEY `FKtda16dbj1xd3qbhu0lh5ba8p9` (`quespaper_id`),
+    KEY `FK9ok3cpp8gq0x8aamkn509qatp` (`ques_id`),
+    PRIMARY KEY (quespaper_id, ques_id));
 

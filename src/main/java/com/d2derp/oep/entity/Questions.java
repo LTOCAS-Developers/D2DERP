@@ -1,20 +1,18 @@
 package com.d2derp.oep.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Questions {
-	
+
+	@Id
+	@GeneratedValue
 	private int questionNumber;
 
 	private String questions;
@@ -24,36 +22,27 @@ public class Questions {
 	private String option4;
 	private String answer;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private Course course;
 
+	@ManyToOne
 	private QuestionsTopic questionsTopic;
+	
+	 @ManyToOne
+	  @JoinTable(name = "QUES_QUESPAPER_ASSO",
+	          joinColumns = {@JoinColumn(name = "QUES_ID", insertable = false,
+	                  updatable = false, referencedColumnName = "questionNumber")},
+	          inverseJoinColumns = {@JoinColumn(name = "QUESPAPER_ID", insertable =false ,
+	                  updatable = false, referencedColumnName = "questionPaperId")}
+	  )
+	  private QuestionPaper questionPaper;
 
-	private List<QuestionsQuespaperAsso> questionsQuespaperAsso = new ArrayList<QuestionsQuespaperAsso>();
-
-	@OneToMany(cascade = CascadeType.ALL)
-	public List<QuestionsQuespaperAsso> getQuestionsQuespaperAsso() {
-		return questionsQuespaperAsso;
+	public int getQuestionNumber() {
+		return questionNumber;
 	}
 
-	public void setQuestionsQuespaperAsso(List<QuestionsQuespaperAsso> questionsQuespaperAsso) {
-		this.questionsQuespaperAsso = questionsQuespaperAsso;
-	}
-
-	public QuestionsTopic getQuestionsTopic() {
-		return questionsTopic;
-	}
-
-	public void setQuestionsTopic(QuestionsTopic questionsTopic) {
-		this.questionsTopic = questionsTopic;
-	}
-
-	public Course getCourse() {
-		return course;
-	}
-
-	public void setCourse(Course course) {
-		this.course = course;
+	public void setQuestionNumber(int questionNumber) {
+		this.questionNumber = questionNumber;
 	}
 
 	public String getQuestions() {
@@ -62,17 +51,6 @@ public class Questions {
 
 	public void setQuestions(String questions) {
 		this.questions = questions;
-	}
-
-	@Id
-	@GeneratedValue
-	@Column(name = "Questions_ID")
-	public int getQuestionNumber() {
-		return questionNumber;
-	}
-
-	public void setQuestionNumber(int questionNumber) {
-		this.questionNumber = questionNumber;
 	}
 
 	public String getOption1() {
@@ -115,4 +93,27 @@ public class Questions {
 		this.answer = answer;
 	}
 
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+
+	public QuestionsTopic getQuestionsTopic() {
+		return questionsTopic;
+	}
+
+	public void setQuestionsTopic(QuestionsTopic questionsTopic) {
+		this.questionsTopic = questionsTopic;
+	}
+
+	public QuestionPaper getQuestionsPaper() {
+		return questionPaper;
+	}
+
+	public void setQuestionsPaper(QuestionPaper questionPaper) {
+		this.questionPaper = questionPaper;
+	}
 }

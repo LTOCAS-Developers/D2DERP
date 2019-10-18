@@ -1,5 +1,8 @@
 package com.d2derp.oep.service.questions;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.d2derp.oep.dao.questions.QuestionsDao;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +24,7 @@ import com.d2derp.oep.pojo.QuestionsTopicPojo;
 
 @Transactional
 @Service("questionsService")
-public class QuestionsServiceImpl implements QuestionsService {
+public class QuestionsServiceImpl implements QuestionsService{
 
 	@Autowired
 	public QuestionsDao questionDao;

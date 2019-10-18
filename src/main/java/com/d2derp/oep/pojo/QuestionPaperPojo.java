@@ -5,13 +5,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class QuestionPaperPojo {
 
-	private int id;
+	private int questionPaperId;
 	private String name;
-	public int getId() {
-		return id;
+	
+	public int getQuestionPaperId() {
+		return questionPaperId;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setQuestionPaperId(int questionPaperId) {
+		this.questionPaperId = questionPaperId;
 	}
 	public String getName() {
 		return name;

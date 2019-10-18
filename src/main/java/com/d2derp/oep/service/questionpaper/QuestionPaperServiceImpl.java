@@ -1,6 +1,7 @@
 package com.d2derp.oep.service.questionpaper;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,25 +10,62 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.d2derp.oep.dao.example.EntityBDao;
+import com.d2derp.oep.dao.example.ExampleDao;
 import com.d2derp.oep.dao.questionpaper.QuestionPaperDao;
+import com.d2derp.oep.entity.EntityA;
+import com.d2derp.oep.entity.EntityB;
 import com.d2derp.oep.entity.QuestionPaper;
 import com.d2derp.oep.pojo.QuestionPaperPojo;
 
 @Transactional
-@Service("QuestionPaperService")
+@Service("questionPaperService")
 public class QuestionPaperServiceImpl implements QuestionPaperService {
-
+	
 	@Autowired
 	public QuestionPaperDao questionPaperDao;
+	
+	@Autowired
+	ExampleDao exampleDao;
+	
+	@Autowired
+	EntityBDao entityBDao;
+	public void oneToManyExample() {
+		
+		System.out.println("iam service");
+		EntityB entityB3 = entityBDao.getOne(3);
+  	EntityB entityB2 = entityBDao.getOne(2);
+//		entityB2.setStrB("testStringB2");
+//		entityB1.setStrB("testStringB");
 
-	public QuestionPaperDao getQuestionPaperDao() {
-		return questionPaperDao;
+
+		EntityA entityA = new EntityA();
+		entityA.setStrA("testStringNew");
+		entityA.setEntityBList(Arrays.asList(entityB2,entityB3));
+
+//		entityB1.setRefEntityA(entityA);
+//		entityB2.setRefEntityA(entityA);
+		exampleDao.save(entityA);
 	}
+	public void getEntities() {
+//		EntityA entityA = exampleDao.getOne(25);
+		//System.out.println(entityA.getEntityBList().get(1).getStrB());
+		
+//		EntityB entityB3=entityA.getEntityBList().get(1);
+		//System.out.println(entityB3.getRefEntityA().getStrA());
+		
+		System.out.println();
+		
+		EntityA entityA = exampleDao.getOne(1);
+		EntityB entityB3 = entityBDao.getOne(3);
+	  	EntityB entityB2 = entityBDao.getOne(2);
+	  	EntityB entityB1 = entityBDao.getOne(1);
 
-	public void setQuestionPaperDao(QuestionPaperDao questionPaperDao) {
-		this.questionPaperDao = questionPaperDao;
+	  	
+
+		entityA.setEntityBList(Arrays.asList(entityB2,entityB3,entityB1));
+
 	}
-
 	@Override
 	public void saveQuestionPaper(QuestionPaperPojo questionPaperPojo) {
 		QuestionPaper questionPaper = new QuestionPaper();
@@ -44,7 +82,7 @@ public class QuestionPaperServiceImpl implements QuestionPaperService {
 
 			QuestionPaperPojo questionPaperPojo = new QuestionPaperPojo();
 			questionPaperPojo.setName(questionPaper.getName());
-			questionPaperPojo.setId(questionPaper.getId());
+			questionPaperPojo.setQuestionPaperId(questionPaper.getQuestionPaperId());
 
 			questionPaperPojoList.add(questionPaperPojo);
 
@@ -61,7 +99,7 @@ public class QuestionPaperServiceImpl implements QuestionPaperService {
 		Optional<QuestionPaper> questionPaper = questionPaperDao.findById(id);
 		QuestionPaperPojo questionPaperPojo = new QuestionPaperPojo();
 		questionPaperPojo.setName(questionPaper.get().getName());
-		questionPaperPojo.setId(questionPaper.get().getId());
+		questionPaperPojo.setQuestionPaperId(questionPaper.get().getQuestionPaperId());
 
 		return questionPaperPojo;
 	}
@@ -74,10 +112,10 @@ public class QuestionPaperServiceImpl implements QuestionPaperService {
 
 	@Override
 	public QuestionPaperPojo editQuestionPaper(QuestionPaperPojo questionPaperPojo) {
-		Optional<QuestionPaper> questionPaper = questionPaperDao.findById(questionPaperPojo.getId());
-		System.out.println(questionPaperPojo.getId());
+		Optional<QuestionPaper> questionPaper = questionPaperDao.findById(questionPaperPojo.getQuestionPaperId());
+		System.out.println(questionPaperPojo.getQuestionPaperId());
 		questionPaper.get().setName(questionPaperPojo.getName());
-		questionPaper.get().setId(questionPaperPojo.getId());
+		questionPaper.get().setQuestionPaperId(questionPaperPojo.getQuestionPaperId());
 
 		return questionPaperPojo;
 	}

@@ -52,7 +52,7 @@ public class QuestionPaperController {
 	@PutMapping(value = "/edit")
 	public ResponseEntity<QuestionPaperPojo> updateQuestionPaper(@RequestBody QuestionPaperPojo questionPaperPojo) {
 
-		if (questionPaperService.findQuestionPaper(questionPaperPojo.getId()) != null) {
+		if (questionPaperService.findQuestionPaper(questionPaperPojo.getQuestionPaperId()) != null) {
 			ResponseEntity.badRequest().build();
 		}
 		return ResponseEntity.ok(questionPaperService.editQuestionPaper(questionPaperPojo));
@@ -69,6 +69,13 @@ public class QuestionPaperController {
 		return ResponseEntity.ok().build();
 
 	}
+	@PostMapping(value="/create")
+	public void createExample(){
+		System.out.println("iam service");
+//		questionPaperService.oneToManyExample();
+	questionPaperService.getEntities();
+	}
+
 
 
 }

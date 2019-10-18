@@ -1,48 +1,51 @@
 package com.d2derp.oep.entity;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 
 @Entity
 public class QuestionPaper {
 
-		private int id;
+	 @Id
+	  @GeneratedValue(strategy = GenerationType.AUTO)
+	private int questionPaperId;
 	private String name;
 	
-	private List<QuestionsQuespaperAsso> questionsQuespaperAsso;
+	 @OneToMany
+	  @JoinTable(name = "QUES_QUESPAPER_ASSO",
+	          joinColumns = {@JoinColumn(name = "QUESPAPER_ID", referencedColumnName = "questionPaperId")},
+	          inverseJoinColumns = {@JoinColumn(name = "QUES_ID", referencedColumnName = "questionNumber")}
+	  )
+	  private List<Questions> questionsList;
 
-	@OneToMany(mappedBy = "questionsQuespaperAssoId.questionPaper", cascade = CascadeType.ALL)
-	public List<QuestionsQuespaperAsso> getQuestionsQuespaperAsso() {
-		return questionsQuespaperAsso;
+	public int getQuestionPaperId() {
+		return questionPaperId;
 	}
-	
-	public void setQuestionsQuespaperAsso(List<QuestionsQuespaperAsso> questionsQuespaperAsso) {
-		this.questionsQuespaperAsso = questionsQuespaperAsso;
+
+	public void setQuestionPaperId(int questionPaperId) {
+		this.questionPaperId = questionPaperId;
 	}
-	
-	@Id
-	@GeneratedValue
-	@Column(name = "QuestionPaper_ID")
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public List<Questions> getQuestionsList() {
+		return questionsList;
 	}
 
-
+	public void setQuestionsList(List<Questions> questionsList) {
+		this.questionsList = questionsList;
+	}
+}

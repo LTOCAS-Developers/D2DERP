@@ -18,5 +18,10 @@ public interface QuestionPaperService {
 	void deleteQuestionPaper(int id);
 
 	QuestionPaperPojo editQuestionPaper(QuestionPaperPojo questionPaperPojo);
+	
+	public void oneToManyExample();
+	public void getEntities() ;
+
+
 
 }
