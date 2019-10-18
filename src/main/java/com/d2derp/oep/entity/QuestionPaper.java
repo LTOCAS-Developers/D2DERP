@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 public class QuestionPaper {
 
 	 @Id
-	  @GeneratedValue(strategy = GenerationType.AUTO)
+	  @GeneratedValue(strategy = GenerationType.AUTO)  
 	private int questionPaperId;
 	private String name;
 	
