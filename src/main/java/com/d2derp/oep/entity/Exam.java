@@ -20,10 +20,10 @@ public class Exam {
 	private Date endTime;
 	private Date date;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private Batch batch;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	private QuestionPaper questionPaper;
 
 	public QuestionPaper getQuestionPaper() {
