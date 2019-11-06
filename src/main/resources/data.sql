@@ -28,10 +28,24 @@ INSERT INTO `d2derp`.`questions_topic` (`id`, `topic`, `course_id`) VALUES ('2',
 INSERT INTO `d2derp`.`questions_topic` (`id`, `topic`, `course_id`) VALUES ('3', 'Component Interaction', '2');
 INSERT INTO `d2derp`.`questions_topic` (`id`, `topic`, `course_id`) VALUES ('4', 'Routing', '2');
 
+INSERT INTO `d2derp`.`batch` (`id`, `name`, `client_id`) VALUES ('1', 'nov-dec', '1');
+
+
 CREATE TABLE `ques_quespaper_asso` (
   `quespaper_id` int(11) NOT NULL,
   `ques_id` int(11) NOT NULL,
   KEY `FKtda16dbj1xd3qbhu0lh5ba8p9` (`quespaper_id`),
     KEY `FK9ok3cpp8gq0x8aamkn509qatp` (`ques_id`),
     PRIMARY KEY (quespaper_id, ques_id));
-
+CREATE TABLE `exam` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` datetime DEFAULT NULL,
+  `end_time` datetime DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `start_time` datetime DEFAULT NULL,
+  `batch_id` int(11) DEFAULT NULL,
+  `question_paper_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKdicamsd2ecsl3tfija5cwk3u2` (`batch_id`),
+  KEY `FKshfnw5r7w64ty7vuqyqbd6x5` (`question_paper_id`)
+) 

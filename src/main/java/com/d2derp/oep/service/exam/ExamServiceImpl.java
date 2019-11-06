@@ -12,10 +12,13 @@ import org.springframework.stereotype.Service;
 
 import com.d2derp.oep.dao.batch.BatchDao;
 import com.d2derp.oep.dao.exam.ExamDao;
+import com.d2derp.oep.dao.questionpaper.QuestionPaperDao;
 import com.d2derp.oep.entity.Batch;
 import com.d2derp.oep.entity.Exam;
+import com.d2derp.oep.entity.QuestionPaper;
 import com.d2derp.oep.pojo.BatchPojo;
 import com.d2derp.oep.pojo.ExamPojo;
+import com.d2derp.oep.pojo.QuestionPaperPojo;
 
 @Transactional
 @Service
@@ -23,38 +26,31 @@ public class ExamServiceImpl implements ExamService {
 
 	@Autowired
 	private BatchDao batchDao;
-	
-	Date date=new Date();
+
+	Date date = new Date();
 
 	@Autowired
 	private ExamDao examDao;
-	
 
-
-	public ExamDao getExamDao() {
-		return examDao;
-	}
-
-	public void setExamDao(ExamDao examDao) {
-		this.examDao = examDao;
-	}
+	@Autowired
+	private QuestionPaperDao questionPaperDao;
 
 	@Override
 	public void saveExam(ExamPojo examPojo) {
 
-
 		Exam exam = new Exam();
 		Batch batch = null;
-		if (examPojo.getBatchPojo().getId() == 0) {
+		QuestionPaper questionPaper = null;
 
-			batch = batchDao.getOne(1);
-		}
+		batch = batchDao.getOne(examPojo.getBatchPojo().getId());
+		questionPaper = questionPaperDao.getOne(examPojo.getQuestionPaperPojo().getQuestionPaperId());
+
 		exam.setName(examPojo.getName());
 		exam.setStartTime(date);
 		exam.setEndTime(date);
 		exam.setDate(date);
-        exam.setBatch(batch);
-
+		exam.setBatch(batch);
+		exam.setQuestionPaper(questionPaper);
 		examDao.save(exam);
 
 	}
@@ -64,6 +60,7 @@ public class ExamServiceImpl implements ExamService {
 		List<ExamPojo> examPojoList = new ArrayList();
 		List<Exam> examList = examDao.findAll();
 		BatchPojo batchPojo = new BatchPojo();
+		QuestionPaperPojo questionPaperPojo=new QuestionPaperPojo();
 
 		for (int i = 0; i < examList.size(); i++) {
 
@@ -77,8 +74,12 @@ public class ExamServiceImpl implements ExamService {
 			examPojo.setEndTime(exam.getEndTime());
 			batchPojo.setName(exam.getBatch().getName());
 			batchPojo.setId(exam.getBatch().getId());
+			questionPaperPojo.setName(exam.getQuestionPaper().getName());
+			questionPaperPojo.setQuestionPaperId(exam.getQuestionPaper().getQuestionPaperId());
 			examPojo.setBatchPojo(batchPojo);
+			
 			examPojoList.add(examPojo);
+			
 
 		}
 
@@ -87,9 +88,10 @@ public class ExamServiceImpl implements ExamService {
 
 	@Override
 	public ExamPojo findExam(int id) {
-		BatchPojo batchPojo =new BatchPojo();
+		BatchPojo batchPojo = new BatchPojo();
+		QuestionPaperPojo questionPaperPojo=new QuestionPaperPojo();
 		Optional<Exam> exam = examDao.findById(id);
-		ExamPojo examPojo =new ExamPojo();
+		ExamPojo examPojo = new ExamPojo();
 		examPojo.setId(exam.get().getId());
 		examPojo.setName(exam.get().getName());
 		examPojo.setDate(exam.get().getDate());
@@ -97,10 +99,12 @@ public class ExamServiceImpl implements ExamService {
 		examPojo.setEndTime(exam.get().getEndTime());
 		batchPojo.setName(exam.get().getBatch().getName());
 		batchPojo.setId(exam.get().getBatch().getId());
+		questionPaperPojo.setName(exam.get().getQuestionPaper().getName());
+		questionPaperPojo.setQuestionPaperId(exam.get().getQuestionPaper().getQuestionPaperId());
+
 		examPojo.setBatchPojo(batchPojo);
 		return examPojo;
 	}
-
 
 	@Override
 	public void deleteExam(int id) {
@@ -108,6 +112,7 @@ public class ExamServiceImpl implements ExamService {
 		examDao.deleteById(id);
 
 	}
+
 	@Override
 	public ExamPojo editExam(ExamPojo examPojo) {
 
@@ -117,7 +122,10 @@ public class ExamServiceImpl implements ExamService {
 		exam.get().setDate(date);
 		exam.get().setStartTime(date);
 		exam.get().setEndTime(date);
-
+		exam.get().getBatch().setName(examPojo.getBatchPojo().getName());
+		exam.get().getBatch().setId(examPojo.getBatchPojo().getId());
+		exam.get().getQuestionPaper().setName(examPojo.getQuestionPaperPojo().getName());
+		exam.get().getQuestionPaper().setQuestionPaperId(examPojo.getQuestionPaperPojo().getQuestionPaperId());
 		return examPojo;
 	}
 
