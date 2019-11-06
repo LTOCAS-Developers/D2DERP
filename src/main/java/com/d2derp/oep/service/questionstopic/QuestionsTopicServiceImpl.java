@@ -125,5 +125,12 @@ public class QuestionsTopicServiceImpl implements QuestionsTopicService {
 		System.out.println(questionsTopicPojo);
 		return questionsTopicPojo;
 	}
+	
+	public List<QuestionsTopic> findQuestionsTopicByCourseId(int id) {
+		
+		
+		List<QuestionsTopic> questionsTopic=questionsTopicDao.findByCourseId(id);
+		return questionsTopic;
+	}    
 
 }

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.d2derp.oep.entity.Questions;
+import com.d2derp.oep.pojo.CourseTopicIdsPojo;
 import com.d2derp.oep.pojo.QuestionsPojo;
 import com.d2derp.oep.service.questions.QuestionsService;
 
@@ -69,4 +71,9 @@ public class QuestionsController {
 
 	}
 
+	@PostMapping(value = "/getQuestionsByAsso")
+	public ResponseEntity<List<Questions>> getQuestionByCourseAndTopic(@RequestBody CourseTopicIdsPojo courseTopicIds) {
+		System.out.println(courseTopicIds.getCourseId());
+		return ResponseEntity.ok(questionsService.getQuestionByCourseAndTopic(courseTopicIds));
+	}
 }

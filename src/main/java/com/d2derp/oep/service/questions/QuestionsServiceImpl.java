@@ -19,6 +19,7 @@ import com.d2derp.oep.entity.Course;
 import com.d2derp.oep.entity.Questions;
 import com.d2derp.oep.entity.QuestionsTopic;
 import com.d2derp.oep.pojo.CoursePojo;
+import com.d2derp.oep.pojo.CourseTopicIdsPojo;
 import com.d2derp.oep.pojo.QuestionsPojo;
 import com.d2derp.oep.pojo.QuestionsTopicPojo;
 
@@ -179,6 +180,14 @@ public class QuestionsServiceImpl implements QuestionsService{
 		questionsTopic.setTopic(questionsPojo.getQuestionsTopicPojo().getTopic());
 
 		return questionsPojo;
+	}
+	@Override
+	public List<Questions> getQuestionByCourseAndTopic(CourseTopicIdsPojo courseTopicIds) {
+		System.out.println(courseTopicIds.getCourseId());
+
+		List<Questions> questionsList = questionDao.findByCourse_IdAndQuestionsTopic_Id(courseTopicIds.getCourseId(),courseTopicIds.getTopicId());
+		
+		return questionsList;
 	}
 
 }
