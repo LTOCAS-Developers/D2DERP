@@ -129,7 +129,6 @@ public class QuestionsTopicServiceImpl implements QuestionsTopicService {
 	public List<QuestionsTopic> findQuestionsTopicByCourseId(int id) {
 		
 		
-		System.out.println("aaaaaaaaa");
 		List<QuestionsTopic> questionsTopic=questionsTopicDao.findByCourseId(id);
 		return questionsTopic;
 	}     
