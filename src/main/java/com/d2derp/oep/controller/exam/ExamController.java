@@ -29,7 +29,11 @@ public class ExamController {
 
 	@RequestMapping("/save")
 	public void saveExam(@RequestBody ExamPojo examPojo) {
+		System.out.println(examPojo.getName());
+
 		examService.saveExam(examPojo);
+		System.out.println(examPojo.getName());
+
 
 	}
 

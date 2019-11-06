@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Exam {
@@ -21,6 +22,17 @@ public class Exam {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Batch batch;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	private QuestionPaper questionPaper;
+
+	public QuestionPaper getQuestionPaper() {
+		return questionPaper;
+	}
+
+	public void setQuestionPaper(QuestionPaper questionPaper) {
+		this.questionPaper = questionPaper;
+	}
 
 	public int getId() {
 		return id;
