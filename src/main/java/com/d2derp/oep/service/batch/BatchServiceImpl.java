@@ -107,4 +107,14 @@ public class BatchServiceImpl implements BatchService {
 		return batchPojo;
 	}
 
+	@Override
+	public Long getCountOfBatches() {
+		// TODO Auto-generated method stub
+		List<Batch> batchPojoList = new ArrayList();
+		Long batchCount;
+		batchCount=batchDao.count();
+		
+		return batchCount;
+	}
+
 }

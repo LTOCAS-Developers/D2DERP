@@ -30,7 +30,7 @@ public class ExamPojo {
 	public void setQuestionPaperPojo(QuestionPaperPojo questionPaperPojo) {
 		this.questionPaperPojo = questionPaperPojo;
 	}
-	public int getId() {
+	public int getId() {							
 		return id;
 	}
 	public void setId(int id) {

@@ -16,4 +16,7 @@ public interface ExamService {
 
 	void deleteExam(int id);
 
+	List<ExamPojo> findExamByBatchId(int id);
+	
+
 }

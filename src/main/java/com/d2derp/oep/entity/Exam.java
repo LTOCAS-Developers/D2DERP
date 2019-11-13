@@ -2,11 +2,13 @@ package com.d2derp.oep.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
@@ -24,6 +26,7 @@ public class Exam {
 	private Batch batch;
 	
 	@OneToOne
+	@JoinColumn(name = "question_paper_id")
 	private QuestionPaper questionPaper;
 
 	public QuestionPaper getQuestionPaper() {

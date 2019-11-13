@@ -59,13 +59,13 @@ public class ExamServiceImpl implements ExamService {
 	public List<ExamPojo> listExam() {
 		List<ExamPojo> examPojoList = new ArrayList();
 		List<Exam> examList = examDao.findAll();
-		
+
 		for (int i = 0; i < examList.size(); i++) {
 
 			Exam exam = examList.get(i);
 			BatchPojo batchPojo = new BatchPojo();
 			ExamPojo examPojo = new ExamPojo();
-			QuestionPaperPojo questionPaperPojo=new QuestionPaperPojo();
+			QuestionPaperPojo questionPaperPojo = new QuestionPaperPojo();
 
 			Batch batch = null;
 			QuestionPaper questionPaper = null;
@@ -88,9 +88,8 @@ public class ExamServiceImpl implements ExamService {
 			questionPaperPojo.setQuestionPaperId(exam.getQuestionPaper().getQuestionPaperId());
 			examPojo.setBatchPojo(batchPojo);
 			examPojo.setQuestionPaperPojo(questionPaperPojo);
-			
+
 			examPojoList.add(examPojo);
-			
 
 		}
 
@@ -100,7 +99,7 @@ public class ExamServiceImpl implements ExamService {
 	@Override
 	public ExamPojo findExam(int id) {
 		BatchPojo batchPojo = new BatchPojo();
-		QuestionPaperPojo questionPaperPojo=new QuestionPaperPojo();
+		QuestionPaperPojo questionPaperPojo = new QuestionPaperPojo();
 		Optional<Exam> exam = examDao.findById(id);
 		ExamPojo examPojo = new ExamPojo();
 		examPojo.setId(exam.get().getId());
@@ -139,6 +138,30 @@ public class ExamServiceImpl implements ExamService {
 		exam.get().getQuestionPaper().setName(examPojo.getQuestionPaperPojo().getName());
 		exam.get().getQuestionPaper().setQuestionPaperId(examPojo.getQuestionPaperPojo().getQuestionPaperId());
 		return examPojo;
+	}
+
+	@Override
+	public List<ExamPojo> findExamByBatchId(int id) {
+
+		System.out.println(id);
+		List<Exam> examList = examDao.findByBatch_Id(id);
+		List<ExamPojo> examPojoList = new ArrayList<>();
+		System.out.println(id);
+		for (int i = 0; i < examList.size(); i++) {
+			System.out.println("hello");
+			ExamPojo examPojo = new ExamPojo();
+			examPojo.setDate(examList.get(i).getDate());
+			examPojo.setEndTime(examList.get(i).getEndTime());
+			examPojo.setId(examList.get(i).getId());
+			examPojo.setName(examList.get(i).getName());
+			examPojo.setStartTime(examList.get(i).getStartTime());
+			examPojoList.add(examPojo);
+			System.out.println(examPojo.getName());
+			System.out.println(examPojoList.get(i).getName());
+		}
+
+		return examPojoList;
+
 	}
 
 }

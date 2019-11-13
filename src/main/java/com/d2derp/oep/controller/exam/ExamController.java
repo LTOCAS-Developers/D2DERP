@@ -67,5 +67,13 @@ public class ExamController {
 		return ResponseEntity.ok().build();
 
 	}
+	@RequestMapping("/getexamsbybatchid/{id}")
+	public ResponseEntity<List<ExamPojo>> findExamByBatchId(@PathVariable(value = "id") int id) {
+		return ResponseEntity.ok(examService.findExamByBatchId(id));
+
+	}
+	
+	
+	
 
 }
