@@ -2,12 +2,23 @@ package com.d2derp.oep.pojo;
 
 import org.springframework.stereotype.Component;
 
+import com.d2derp.oep.entity.FeedBack;
+
 @Component
 public class CoursePojo {
 
 	
 	private int id;
 	private String name;
+	private FeedBack feedBack;
+	
+	
+	public FeedBack getFeedBack() {
+		return feedBack;
+	}
+	public void setFeedBack(FeedBack feedBack) {
+		this.feedBack = feedBack;
+	}
 	public int getId() {
 		return id;
 	}

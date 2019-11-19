@@ -1,6 +1,5 @@
 package com.d2derp.oep.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -33,8 +32,7 @@ public class Questions {
 	          joinColumns = {@JoinColumn(name = "QUES_ID", insertable = false,
 	                  updatable = false, referencedColumnName = "questionNumber")},
 	          inverseJoinColumns = {@JoinColumn(name = "QUESPAPER_ID", insertable =false ,
-	                  updatable = false, referencedColumnName = "questionPaperId")}
-	  )
+	                  updatable = false, referencedColumnName = "questionPaperId")})
 	  private QuestionPaper questionPaper;
 
 	public int getQuestionNumber() {

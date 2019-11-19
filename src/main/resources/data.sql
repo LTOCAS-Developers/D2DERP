@@ -38,14 +38,6 @@ INSERT INTO `d2derp`.`questions_topic` (`id`, `topic`, `course_id`) VALUES ('1',
 INSERT INTO `d2derp`.`questions_topic` (`id`, `topic`, `course_id`) VALUES ('2', 'MultiThreatening', '1');
 INSERT INTO `d2derp`.`questions_topic` (`id`, `topic`, `course_id`) VALUES ('3', 'Component Interaction', '2');
 INSERT INTO `d2derp`.`questions_topic` (`id`, `topic`, `course_id`) VALUES ('4', 'Routing', '2');
-
-<<<<<<< HEAD
->>>>>>> branch 'master' of https://github.com/LTOCAS-Developers/d2derp.git
-=======
-INSERT INTO `d2derp`.`batch` (`id`, `name`, `client_id`) VALUES ('1', 'nov-dec', '1');
-
-
->>>>>>> branch 'master' of https://github.com/LTOCAS-Developers/d2derp.git
 CREATE TABLE `ques_quespaper_asso` (
   `quespaper_id` int(11) NOT NULL,
   `ques_id` int(11) NOT NULL,
@@ -64,3 +56,9 @@ CREATE TABLE `exam` (
   KEY `FKdicamsd2ecsl3tfija5cwk3u2` (`batch_id`),
   KEY `FKshfnw5r7w64ty7vuqyqbd6x5` (`question_paper_id`)
 ) 
+CREATE TABLE `feedback_asso` (
+  `feed_back_id` int(11) DEFAULT NULL,
+  `course_id` int(11) NOT NULL,
+  KEY `FKn9aee2fde23gl7uuntvccbv69` (`feed_back_id`),
+ KEY `FKlubot9uvbmk6fgyks7nnpneo8` (`course_id`)
+)

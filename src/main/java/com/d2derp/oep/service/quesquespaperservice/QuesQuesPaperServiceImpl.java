@@ -50,6 +50,7 @@ public class QuesQuesPaperServiceImpl implements QuesQuesPaperService {
 
 		QuestionPaper questionPaper = questionPaperDao.getOne(questionsQuespaperAssoPojo.getQuestionPaperId());
 
+		
 		List<Questions> questionList = questionPaper.getQuestionsList();
 		System.out.println(questionList.size());
 
@@ -62,11 +63,8 @@ public class QuesQuesPaperServiceImpl implements QuesQuesPaperService {
 				}
 			}
 
-			System.out.println(questionList.size());
 
 		}
-		System.out.println(questionList.size());
-
 	}
 
 }

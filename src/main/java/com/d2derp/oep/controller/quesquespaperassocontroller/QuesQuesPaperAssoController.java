@@ -27,5 +27,4 @@ public class QuesQuesPaperAssoController {
 		quesQuesPaperService.deleteQuestionsAssociation(questionsQuespaperAssoPojo);
 	}
 
-	
 }

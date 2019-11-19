@@ -17,8 +17,8 @@ public interface QuestionsService {
 	void deleteQuestions(int id);
 
 	
-QuestionsPojo editQuestion(QuestionsPojo questionsPojo);
+	QuestionsPojo editQuestion(QuestionsPojo questionsPojo);
 
-List<Questions> getQuestionByCourseAndTopic(CourseTopicIdsPojo courseTopicIds);
+	List<Questions> getQuestionByCourseAndTopic(CourseTopicIdsPojo courseTopicIds);
 
 }
