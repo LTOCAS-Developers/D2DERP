@@ -16,4 +16,6 @@ public interface BatchService {
 
 	BatchPojo editBatch(BatchPojo batchpojo);
 
+	Long getCountOfBatches();
+
 }

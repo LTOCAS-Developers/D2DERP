@@ -49,6 +49,11 @@ public class BatchController {
 		return ResponseEntity.ok(batchService.findBatch(id));
 
 	}
+	@GetMapping(value = "/getbatchcount")
+	public ResponseEntity<Long> getCountOfBatches() {
+		return ResponseEntity.ok(batchService.getCountOfBatches());
+
+	}
 
 	@PutMapping(value = "/edit")
 	public ResponseEntity<BatchPojo> updateBatch(@RequestBody BatchPojo batchPojo) {

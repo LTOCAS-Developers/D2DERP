@@ -59,27 +59,37 @@ public class ExamServiceImpl implements ExamService {
 	public List<ExamPojo> listExam() {
 		List<ExamPojo> examPojoList = new ArrayList();
 		List<Exam> examList = examDao.findAll();
-		BatchPojo batchPojo = new BatchPojo();
-		QuestionPaperPojo questionPaperPojo=new QuestionPaperPojo();
 
 		for (int i = 0; i < examList.size(); i++) {
 
 			Exam exam = examList.get(i);
-
+			BatchPojo batchPojo = new BatchPojo();
 			ExamPojo examPojo = new ExamPojo();
+			QuestionPaperPojo questionPaperPojo = new QuestionPaperPojo();
+
+			Batch batch = null;
+			QuestionPaper questionPaper = null;
+
+			batch = batchDao.getOne(exam.getBatch().getId());
+			System.out.println(batch.getName());
+			System.out.println(batch.getId());
+
+			questionPaper = questionPaperDao.getOne(exam.getQuestionPaper().getQuestionPaperId());
+
 			examPojo.setName(exam.getName());
 			examPojo.setId(exam.getId());
 			examPojo.setDate(exam.getDate());
 			examPojo.setStartTime(exam.getStartTime());
 			examPojo.setEndTime(exam.getEndTime());
-			batchPojo.setName(exam.getBatch().getName());
-			batchPojo.setId(exam.getBatch().getId());
+			batchPojo.setName(exam.getName());
+			batchPojo.setId(exam.getId());
 			questionPaperPojo.setName(exam.getQuestionPaper().getName());
+			System.out.println(questionPaper.getName());
 			questionPaperPojo.setQuestionPaperId(exam.getQuestionPaper().getQuestionPaperId());
 			examPojo.setBatchPojo(batchPojo);
-			
+			examPojo.setQuestionPaperPojo(questionPaperPojo);
+
 			examPojoList.add(examPojo);
-			
 
 		}
 
@@ -89,7 +99,7 @@ public class ExamServiceImpl implements ExamService {
 	@Override
 	public ExamPojo findExam(int id) {
 		BatchPojo batchPojo = new BatchPojo();
-		QuestionPaperPojo questionPaperPojo=new QuestionPaperPojo();
+		QuestionPaperPojo questionPaperPojo = new QuestionPaperPojo();
 		Optional<Exam> exam = examDao.findById(id);
 		ExamPojo examPojo = new ExamPojo();
 		examPojo.setId(exam.get().getId());
@@ -103,6 +113,7 @@ public class ExamServiceImpl implements ExamService {
 		questionPaperPojo.setQuestionPaperId(exam.get().getQuestionPaper().getQuestionPaperId());
 
 		examPojo.setBatchPojo(batchPojo);
+		examPojo.setQuestionPaperPojo(questionPaperPojo);
 		return examPojo;
 	}
 
@@ -127,6 +138,30 @@ public class ExamServiceImpl implements ExamService {
 		exam.get().getQuestionPaper().setName(examPojo.getQuestionPaperPojo().getName());
 		exam.get().getQuestionPaper().setQuestionPaperId(examPojo.getQuestionPaperPojo().getQuestionPaperId());
 		return examPojo;
+	}
+
+	@Override
+	public List<ExamPojo> findExamByBatchId(int id) {
+
+		System.out.println(id);
+		List<Exam> examList = examDao.findByBatch_Id(id);
+		List<ExamPojo> examPojoList = new ArrayList<>();
+		System.out.println(id);
+		for (int i = 0; i < examList.size(); i++) {
+			System.out.println("hello");
+			ExamPojo examPojo = new ExamPojo();
+			examPojo.setDate(examList.get(i).getDate());
+			examPojo.setEndTime(examList.get(i).getEndTime());
+			examPojo.setId(examList.get(i).getId());
+			examPojo.setName(examList.get(i).getName());
+			examPojo.setStartTime(examList.get(i).getStartTime());
+			examPojoList.add(examPojo);
+			System.out.println(examPojo.getName());
+			System.out.println(examPojoList.get(i).getName());
+		}
+
+		return examPojoList;
+
 	}
 
 }
